@@ -28,7 +28,7 @@ python run_gloo.py \
     --weight_decay 1e-5 --use_nesterov False --momentum_factor 0.9 \
     --track_time True --display_tracked_time True --python_path $HOME/anaconda3/envs/fed_d/bin/python \
     --manual_seed 7 --pn_normalize True --same_seed_process True \
-    --algo pFedSD \
+    --algo HKD_pFed \
     --personal_test True \
     --port 20002 --timestamp $(date "+%Y%m%d%H%M%S")
 ```

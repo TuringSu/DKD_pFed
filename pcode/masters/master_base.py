@@ -237,22 +237,15 @@ class MasterBase(object):
         self.conf.logger.log(f"Master received all local models.")
         return flatten_local_models
 
-    # 定义函数_compute_best_mean_client_performance()用于计算最佳平均客户端性能
     def _compute_best_mean_client_performance(self):
-        # personal_test method 2
-        # 初始化列表curr_perf
         curr_perf = []
-        # 将当前个人性能（self.curr_personal_perfs中的性能值）存储在列表curr_perf中
+
         for curr_personal_perf in self.curr_personal_perfs.values():
             curr_perf.append(curr_personal_perf)
-        # 使用functools.reduce函数计算性能的总和，并除以性能值的数量，得到平均性能curr_perf
         curr_perf = functools.reduce(lambda a, b: a + b, curr_perf) / len(curr_perf)
-        # 将平均性能curr_perf保存为平均测试统计，并通过self.personal_avg_coordinator对象更新性能
         save_average_test_stat(self.conf, curr_perf.dictionary)
         self.personal_avg_coordinator.update_perf(curr_perf)
 
-        # 对于self.personal_avg_coordinator.best_trackers中的每个追踪器，将其最佳性能、最佳性能位置和当前通信轮数打印日志。
-        # 日志消息将显示个人最佳平均结果的相关信息
         for name, best_tracker in self.personal_avg_coordinator.best_trackers.items():
             self.conf.logger.log(
                 "Personal_test method 2 \
