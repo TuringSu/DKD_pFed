@@ -18,7 +18,7 @@ from pcode.masters.master_fedavg import MasterFedAvg
 # from pcode.masters.master_fedper import MasterFedPer
 # from pcode.masters.master_lg_fedavg import MasterLGFedAvg
 # from pcode.masters.master_local_train import MasterLocalTrain
-from pcode.masters.master_pFedSD import MasterpFedSD
+from pcode.masters.master_HKD import MasterHKD
 # from pcode.masters.master_pFedMe import MasterpFedMe
 # from pcode.masters.master_tlkt import MasterTLKT
 from pcode.workers.worker_fedavg import WorkerFedAvg
@@ -26,7 +26,7 @@ from pcode.workers.worker_fedavg import WorkerFedAvg
 # from pcode.workers.worker_fedper import WorkerFedPer
 # from pcode.workers.worker_lg_fedavg import WorkerLGFedAvg
 # from pcode.workers.worker_local_train import WorkerLocalTrain
-from pcode.workers.worker_pFedSD import WorkerpFedSD
+from pcode.workers.worker_HKD import WorkerHKD
 
 # from pcode.workers.worker_pFedme import WorkerpFedMe
 # from pcode.workers.worker_tlkt import WorkerTLKT
@@ -78,9 +78,9 @@ def main(rank, size, conf, port):
     #     worker_func = WorkerTLKT
     elif conf.algo == "pFedSD":
         # MasterpFedSD用于控制和管理分布式训练的主进程
-        master_func = MasterpFedSD
+        master_func = MasterHKD
         # WorkerpFedSD用于执行具体训练任务的工作进程
-        worker_func = WorkerpFedSD
+        worker_func = WorkerHKD
         
 
     else:

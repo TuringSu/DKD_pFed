@@ -25,7 +25,7 @@ from ..DKD import dkd_loss
 from ..feddecorr_loss import FedDecorrLoss
 
 
-class WorkerpFedSD(WorkerBase):
+class WorkerHKD(WorkerBase):
     def __init__(self, conf):
         super().__init__(conf)
         self.M = 1

@@ -20,7 +20,7 @@ from pcode.utils.tensor_buffer import TensorBuffer
 
 
 # 定义MasterpFedSD类，继承自MasterBase类
-class MasterpFedSD(MasterBase):
+class MasterHKD(MasterBase):
     def __init__(self, conf):
         # 调用父类MasterBase的构造函数，进行基础的初始化操作
         super().__init__(conf)
