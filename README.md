@@ -1,6 +1,6 @@
-# pFedSD
+# HKD_pFed
 
-This is the implementation of "Personalized Edge Intelligence via Federated Self- Knowledge Distillation", also published in IEEE TPDS journal.
+This is the implementation of "Historical-Knowledge Distillation with Logits Decoupling and Feature Decorrelation for Personalized Federated Learning".
 
 ## Requirements
 Please run the following commands below to install dependencies.
@@ -13,36 +13,14 @@ pip install transformers datasets pytreebank opencv-python torchcontrib gpytorch
 ```
 
 ## Training and evaluation
-Details for each argument are included in `./parameters.py`.  
-
-The setup of the FedAvg/FedProx for resnet-8 on cifar10 with pathological distribution:
-```bash
-python run_gloo.py \
-    --arch resnet8 --complex_arch master=resnet8,worker=resnet8 --experiment demo \
-    --data cifar10 --pin_memory True --batch_size 64 --num_workers 2 --prepare_data combine \
-    --partition_data pathological --shard_per_user 2 \
-    --train_data_ratio 0.8 --val_data_ratio 0.0 --test_data_ratio 0.2 \
-    --n_clients 10 --participation_ratio 0.6 --n_comm_rounds 5 --local_n_epochs 5 \
-    --world_conf 0,0,1,1,100 --on_cuda True \
-    --fl_aggregate scheme=federated_average \
-    --optimizer sgd --lr 0.01 --local_prox_term 0 --lr_warmup False --lr_warmup_epochs 5 --lr_warmup_epochs_upper_bound 150 \
-    --lr_scheduler MultiStepLR --lr_decay 0.1 \
-    --weight_decay 1e-5 --use_nesterov False --momentum_factor 0.9 \
-    --track_time True --display_tracked_time True --python_path $HOME/anaconda3/envs/fed_d/bin/python \
-    --manual_seed 7 --pn_normalize True --same_seed_process True \
-    --algo fedavg \
-    --personal_test True \
-    --port 20001 --timestamp $(date "+%Y%m%d%H%M%S")
-```
-
-The setup of the pFedSD for simple cnn on cifar10 with dirichlet distribution:
+The setup of the HKD_pFed for simple cnn on cifar10 with dirichlet distribution:
 ```bash
 python run_gloo.py \
     --arch simple_cnn --complex_arch master=simple_cnn,worker=simple_cnn --experiment demo \
     --data cifar10 --pin_memory True --batch_size 64 --num_workers 2 --prepare_data combine \
     --partition_data non_iid_dirichlet --non_iid_alpha 0.1 \
     --train_data_ratio 0.8 --val_data_ratio 0.0 --test_data_ratio 0.2 \
-    --n_clients 10 --participation_ratio 0.6 --n_comm_rounds 5 --local_n_epochs 5 \
+    --n_clients 100 --participation_ratio 0.1 --n_comm_rounds 100 --local_n_epochs 15 \
     --world_conf 0,0,1,1,100 --on_cuda True \
     --fl_aggregate scheme=federated_average \
     --optimizer sgd --lr 0.01 --local_prox_term 0 --lr_warmup False --lr_warmup_epochs 5 --lr_warmup_epochs_upper_bound 150 \
