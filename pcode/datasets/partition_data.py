@@ -9,8 +9,6 @@ import torch.distributed as dist
 
 random_state_partition = np.random.RandomState(7)
 
-
-# 对数据集进行处理
 class Partition(object):
     """ Dataset-like object, but only access a subset of it. """
 
