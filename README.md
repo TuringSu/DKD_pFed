@@ -1,6 +1,6 @@
-# HKD_pFed
+# DKD-pFed
 
-This is the implementation of "Historical-Knowledge Distillation with Logits Decoupling and Feature Decorrelation for Personalized Federated Learning".
+This is the implementation of "DKD-pFed: A Novel Framework for Personalized Federated Learning via Decoupling Knowledge Distillation and Feature Decorrelation".
 
 ## Requirements
 Please run the following commands below to install dependencies.
